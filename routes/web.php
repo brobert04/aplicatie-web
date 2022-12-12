@@ -28,4 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// Route::view('dashboard', 'admin.layouts.layout-dashboard');
+
 require __DIR__.'/auth.php';
