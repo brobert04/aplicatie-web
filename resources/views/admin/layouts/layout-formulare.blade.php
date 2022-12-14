@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- header -->
-    @include('admin.partials.head')
+<!-- header -->
+@include('admin.partials.login-signup-partials.head')
 
-    <body class="">
+<body class="">
 
-    @yield('content')
+@yield('content')
 
-    <!--   Core JS Files   -->
-    @include('admin.partials.scripts')    
-    </body>
-    
+<!--   Core JS Files   -->
+@include('admin.partials.login-signup-partials.scripts')
+</body>
+
 </html>

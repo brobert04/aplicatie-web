@@ -19,8 +19,12 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.control-panel');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('users', function () {
+    return view('admin.users');
+})->middleware(['auth', 'verified'])->name('users')->prefix('admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
