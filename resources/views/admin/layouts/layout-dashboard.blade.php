@@ -7,8 +7,12 @@
     @include('admin.partials.dashboard-partials.sidenav')
     <div id="layoutSidenav_content">
         <main>
-    @yield('content')
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">@yield('title')</h1>
+                @yield('content')
+            </div>
         </main>
+        @include('admin.partials.dashboard-partials.footer')
     </div>
 </div>
 @include('admin.partials.dashboard-partials.scripts-dashboard')

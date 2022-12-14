@@ -1,63 +1,47 @@
 @extends('admin.layouts.layout-dashboard')
-
+@section('title', 'Gestionare Utilizatori')
 @section('content')
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">Tables</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Tables</li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Panou Control</a></li>
+                    <li class="breadcrumb-item active">Utilizatori</li>
                 </ol>
                 <div class="card mb-4">
-                    <div class="card-body">
-                        DataTables is a third party plugin that is used to generate the demo table below. For more
-                        information about DataTables, please visit the
-                        <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                        .
-                    </div>
-                </div>
-                <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        DataTable Example
+                        Utilizatori înregistrați - {{$users->count() }}
                     </div>
                     <div class="card-body">
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>Nume</th>
+                                <th>Email</th>
+                                <th>Creat la</th>
+                                <th>Acțiuni</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                            </tfoot>
                             <tbody>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->created_at}}</td>
+                                    <td class="text-center">
+                                        <a href="" class="butoane text-success" title="Editează utilizator"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
+                                        &nbsp;
+                                        <a href="" class="butoane text-danger" title="Șterge utilizator"><i class="fa-sharp fa-xl fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+@endsection
+
+@section('custom-css')
+    <style>
+        .butoane{
+            text-decoration: none !important;
+        }
+    </style>
 @endsection

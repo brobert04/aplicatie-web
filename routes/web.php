@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +23,13 @@ Route::get('/dashboard', function () {
     return view('admin.control-panel');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('users', function () {
-    return view('admin.users');
-})->middleware(['auth', 'verified'])->name('users')->prefix('admin');
+Route::get('users', [UsersController::class, 'showUsers'])->middleware(['auth', 'verified'])->name('users')->prefix('admin');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
+//Route::middleware('auth')->group(function () {
+//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//});
 
 // Route::view('dashboard', 'admin.layouts.layout-dashboard');
 
