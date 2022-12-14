@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
     return view('admin.control-panel');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('users', [UsersController::class, 'showUsers'])->middleware(['auth', 'verified'])->name('users')->prefix('admin');
+Route::get('users', [UsersController::class, 'showUsers'])->middleware(['admin'])->name('users')->prefix('admin');
 
 //Route::middleware('auth')->group(function () {
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
