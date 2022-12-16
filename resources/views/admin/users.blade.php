@@ -8,6 +8,7 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         Utilizatori înregistrați - {{$users->count() }}
+                        <a href="{{route('users.name')}}" class=" float-end ">Adaugă Utilizatori</a>
                     </div>
                     <div class="card-body">
                         <table id="datatablesSimple">

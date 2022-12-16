@@ -15,6 +15,7 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../admin/css/blog.css" rel="stylesheet" />
     <link href="../admin/css/welcome.css" rel="stylesheet" />
     <style>
         .titlu {
@@ -66,6 +67,163 @@
         @endif
     </div>
 </header>
+<div class="py-5"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card">
+                <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+                <div class="card-img-overlay">
+                    <a href="#" class="btn btn-light btn-sm">Cooking</a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Pasta with Prosciutto</h4>
+                    <small class="text-muted cat">
+                        <i class="far fa-clock text-info"></i> 30 minutes
+                        <i class="fas fa-users text-info"></i> 4 portions
+                    </small>
+                    <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
+                    <a href="#" class="btn btn-info">Read Recipe</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views">Oct 20, 12:45PM
+                    </div>
+                    <div class="stats">
+                        <i class="far fa-eye"></i> 1347
+                        <i class="far fa-comment"></i> 12
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card">
+                <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+                <div class="card-img-overlay">
+                    <a href="#" class="btn btn-light btn-sm">Cooking</a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Pasta with Prosciutto</h4>
+                    <small class="text-muted cat">
+                        <i class="far fa-clock text-info"></i> 30 minutes
+                        <i class="fas fa-users text-info"></i> 4 portions
+                    </small>
+                    <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
+                    <a href="#" class="btn btn-info">Read Recipe</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views">Oct 20, 12:45PM
+                    </div>
+                    <div class="stats">
+                        <i class="far fa-eye"></i> 1347
+                        <i class="far fa-comment"></i> 12
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card">
+                <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+                <div class="card-img-overlay">
+                    <a href="#" class="btn btn-light btn-sm">Cooking</a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Pasta with Prosciutto</h4>
+                    <small class="text-muted cat">
+                        <i class="far fa-clock text-info"></i> 30 minutes
+                        <i class="fas fa-users text-info"></i> 4 portions
+                    </small>
+                    <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
+                    <a href="#" class="btn btn-info">Read Recipe</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views">Oct 20, 12:45PM
+                    </div>
+                    <div class="stats">
+                        <i class="far fa-eye"></i> 1347
+                        <i class="far fa-comment"></i> 12
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row py-5">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card">
+                <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+                <div class="card-img-overlay">
+                    <a href="#" class="btn btn-light btn-sm">Cooking</a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Pasta with Prosciutto</h4>
+                    <small class="text-muted cat">
+                        <i class="far fa-clock text-info"></i> 30 minutes
+                        <i class="fas fa-users text-info"></i> 4 portions
+                    </small>
+                    <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
+                    <a href="#" class="btn btn-info">Read Recipe</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views">Oct 20, 12:45PM
+                    </div>
+                    <div class="stats">
+                        <i class="far fa-eye"></i> 1347
+                        <i class="far fa-comment"></i> 12
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card">
+                <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+                <div class="card-img-overlay">
+                    <a href="#" class="btn btn-light btn-sm">Cooking</a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Pasta with Prosciutto</h4>
+                    <small class="text-muted cat">
+                        <i class="far fa-clock text-info"></i> 30 minutes
+                        <i class="fas fa-users text-info"></i> 4 portions
+                    </small>
+                    <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
+                    <a href="#" class="btn btn-info">Read Recipe</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views">Oct 20, 12:45PM
+                    </div>
+                    <div class="stats">
+                        <i class="far fa-eye"></i> 1347
+                        <i class="far fa-comment"></i> 12
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card">
+                <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+                <div class="card-img-overlay">
+                    <a href="#" class="btn btn-light btn-sm">Cooking</a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Pasta with Prosciutto</h4>
+                    <small class="text-muted cat">
+                        <i class="far fa-clock text-info"></i> 30 minutes
+                        <i class="fas fa-users text-info"></i> 4 portions
+                    </small>
+                    <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
+                    <a href="#" class="btn btn-info">Read Recipe</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views">Oct 20, 12:45PM
+                    </div>
+                    <div class="stats">
+                        <i class="far fa-eye"></i> 1347
+                        <i class="far fa-comment"></i> 12
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

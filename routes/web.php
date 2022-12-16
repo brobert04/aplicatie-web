@@ -23,14 +23,20 @@ Route::get('/dashboard', function () {
     return view('admin.control-panel');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('users', [UsersController::class, 'showUsers'])->middleware(['admin'])->name('users')->prefix('admin');
+
+//====Rutele administratorului====
+Route::prefix('admin')->middleware(['admin'])->group(function(){
+    Route::get('users', [UsersController::class, 'showUsers'])->name('users');
+    Route::get('new-user', [UsersController::class, 'newUser'])->name('users.name');
+    Route::post('new-user', [UsersController::class, 'createUser'])->name('users.create');
+});
+//=================
+
 
 //Route::middleware('auth')->group(function () {
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 //});
-
-// Route::view('dashboard', 'admin.layouts.layout-dashboard');
 
 require __DIR__.'/auth.php';
