@@ -30,8 +30,10 @@ Route::prefix('admin')->middleware(['admin'])->group(function(){
     Route::get('new-user', [UsersController::class, 'newUser'])->name('users.name');
     Route::post('new-user', [UsersController::class, 'createUser'])->name('users.create');
     Route::get('edit-user/{id}', [UsersController::class, 'editUserForm'])->name('users.edit-form');
+    Route::put('edit-user/{id}', [UsersController::class, 'editUser'])->name('users.edit');
+    Route::delete('delete-user/{id}', [UsersController::class, 'deleteUser'])->name('users.delete');
 });
-//=================
+//=================z
 
 
 //Route::middleware('auth')->group(function () {

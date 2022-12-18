@@ -5,6 +5,11 @@
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Panou Control</a></li>
                     <li class="breadcrumb-item active">Utilizatori</li>
                 </ol>
+                @if(session()->has('success'))
+                    <div class="alert alert-success" id="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <div class="card mb-4">
                     <div class="card-header">
                         Utilizatori înregistrați - {{$users->count() }}
@@ -43,7 +48,11 @@
                                     <td class="text-center">
                                         <a href="{{route('users.edit-form', $user->id)}}" class="butoane text-success" title="Editează utilizator"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
                                         &nbsp;
-                                        <a href="" class="butoane text-danger" title="Șterge utilizator"><i class="fa-sharp fa-xl fa-solid fa-trash"></i></a>
+                                        <form id="delete-form-{{$user->id}}" action="{{route('users.delete', $user->id)}}" method="post" style="display:inline-block;">
+                                            @csrf
+                                        </form>
+
+                                        <a href="{{route('users.delete', $user->id)}}" class="butoane text-danger" title="Șterge utilizator" onClick="deleteItem({{$user->id}}, {{$user->name}})"><i class="fa-sharp fa-xl fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -68,3 +77,16 @@
         }
     </style>
 @endsection
+@section('custom-js')
+    <script>
+        setTimeout(()=>{
+            document.getElementById('alert').style.display = 'none';
+        }, 3000);
+    </script>
+    <script>
+        function deleteItem(id, name){
+            if(confirm(`Sunteți sigur că doriți să ștergeți utilizatorul ${name}?`)){
+                document.getElementById('delete-form-'+id).submit();
+            }
+        }
+    </script>

@@ -4,8 +4,9 @@
         <div class="card-header">
             <h3 class="card-title">Editează utilizatorul <span class="text-warning fst-italic">{{$user->name}}</span></h3>
         </div>
-        <form method="POST" action="{{route('users.create')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{route('users.edit', $user->id)}}" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">Nume</label>
@@ -30,7 +31,7 @@
                 <div class="form-group">
                     <label for="exampleInputFile">Poză de Profil</label>
                     <div class="preview-image">
-                        <img id="photo_preview" src="" class="img-thumbnail" style="max-width: 200px; max-height: 200px;">
+                        <img id="photo_preview" src="{{'/images/users/' . $user->profile_picture}}" class="img-thumbnail" style="max-width: 200px; max-height: 200px;">
                     </div>
                     <div class="input-group">
                         <div class="custom-file">
