@@ -37,11 +37,11 @@
                                         <span class="under-info">{{$user->phone}}</span>
                                     </td>
                                     <td class="text-center">
-                                        <img class="user-avatar" src="../admin/img/users/{{$user->profile_picture}}">
+                                        <img class="user-avatar" src="../images/users/{{$user->profile_picture}}">
                                     </td>
                                     <td style="text-transform: capitalize">{{$user->role}}</td>
                                     <td class="text-center">
-                                        <a href="" class="butoane text-success" title="Editează utilizator"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
+                                        <a href="{{route('users.edit-form', $user->id)}}" class="butoane text-success" title="Editează utilizator"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
                                         &nbsp;
                                         <a href="" class="butoane text-danger" title="Șterge utilizator"><i class="fa-sharp fa-xl fa-solid fa-trash"></i></a>
                                     </td>

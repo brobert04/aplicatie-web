@@ -2,29 +2,29 @@
 @section('content')
     <div class="card card-dark">
         <div class="card-header">
-            <h3 class="card-title">Adaugă utilizator nou</h3>
+            <h3 class="card-title">Editează utilizatorul <span class="text-warning fst-italic">{{$user->name}}</span></h3>
         </div>
         <form method="POST" action="{{route('users.create')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">Nume</label>
-                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nume și prenume" value="{{old('name')}}">
+                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nume și prenume" value="{{$user->name}}">
                     @error('name') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" value="{{old('email')}}">
+                    <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" value="{{$user->email}}">
                     @error('email') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="phone_number">Număr de telefon</label>
-                    <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" placeholder="Număr de telefon" value="{{old('phone_number')}}">
+                    <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" placeholder="Număr de telefon" value="{{$user->phone}}">
                     @error('phone_number') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="address">Adresă</label>
-                    <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" id="address" placeholder="Adresă" value="{{old('address')}}">
+                    <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" id="address" placeholder="Adresă" value="{{$user->address}}">
                     @error('address') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
@@ -42,26 +42,16 @@
                 </div>
                 <div class="form-group">
                     <label for="role">Rol</label>
-                    <select class="form-control" name="role" value="{{ old('role')}}">
-                        <option value="admin">Administrator</option>
-                        <option value="autor">Autor</option>
-                        <option value="editor">Editor</option>
+                    <select class="form-control" name="role">
+                        <option value="admin" {{ $user->role =='admin' ? 'selected' : ''}}>Administrator</option>
+                        <option value="autor" {{ $user->role =='autor' ? 'selected' : ''}}>Autor</option>
+                        <option value="editor" {{ $user->role =='editor' ? 'selected' : ''}}>Editor</option>
                     </select>
                     @error('role') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
-                <div class="form-group">
-                    <label for="password">Parolă</label>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Parolă">
-                    @error('password') <span class="text-danger small">{{$message}}</span>@enderror
-                </div>
-                <div class="form-group">
-                    <label for="password_confirmation">Confirmare Parolă</label>
-                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Confirmare Parolă">
-                    @error('password_confirmation') <span class="text-danger small">{{$message}} </span>@enderror
-                </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-dark">Creează</button>
+                <button type="submit" class="btn btn-dark">Editează</button>
                 <a href="{{route('users')}}" class="btn btn-danger float-end">Anulează</a>
             </div>
         </form>
@@ -89,4 +79,5 @@
             }
         };
     </script>
+
 

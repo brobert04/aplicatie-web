@@ -30,6 +30,7 @@ class CreateUserRequest extends FormRequest
             'address'=>'max:100',
             'role'=>'required',
             'password'=>'required|min:8|confirmed',
+            'profile_photo'=>'max:2048',
         ];
     }
     public function messages(){
@@ -45,6 +46,7 @@ class CreateUserRequest extends FormRequest
             'password.required'=>'Parola este obligatorie',
             'password.min'=>'Parola trebuie să aibă minim 8 caractere',
             'password.confirmed'=>'Parolele nu se potrivesc',
+            'profile_photo.max'=>'Imaginea nu poate avea mai mult de 2MB',
         ];
     }
 }

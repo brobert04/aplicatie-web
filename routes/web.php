@@ -29,6 +29,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function(){
     Route::get('users', [UsersController::class, 'showUsers'])->name('users');
     Route::get('new-user', [UsersController::class, 'newUser'])->name('users.name');
     Route::post('new-user', [UsersController::class, 'createUser'])->name('users.create');
+    Route::get('edit-user/{id}', [UsersController::class, 'editUserForm'])->name('users.edit-form');
 });
 //=================
 

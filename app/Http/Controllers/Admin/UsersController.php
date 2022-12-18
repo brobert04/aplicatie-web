@@ -30,7 +30,19 @@ class UsersController extends Controller
         $user->role  = $request->role;
         $user->password =bcrypt($request->password);
 
+        if($request->hasFile('profile_photo')){
+            $extension = $request->file('profile_photo')->getClientOriginalExtension();
+            $photo_name = str_replace(' ', '',$request->name) .'_' . time().'.'.$extension;
+            $request->file('profile_photo')->move('images/users', $photo_name);
+            $user->profile_picture = $photo_name;
+        }
+
         $user->save();
         return redirect(route('users'))->with('success', 'User created successfully');
+    }
+
+    public function editUserForm($id){
+        $user=User::find($id);
+        return view('admin.edit-user')->with('user', $user);
     }
 }
