@@ -80,13 +80,16 @@ class UsersController extends Controller
         return redirect(route('users'))->withInput()->with('success', 'Utilizatorul' .' '.$user->name. ' '. 'a fost actualizat cu succes!');
     }
 
-    public function deleteUser(Request $request, $id){
+    function deleteUser(Request $request, $id){
         $user = User::find($id);
-        if($user->profile_picture == 'default.png'){
+
+        if($user->role=='admin'){
+            return redirect(route('users'))->withInput()->with('error', 'Nu puteți șterge un administrator!');
+        }
+        if(!($user->profile_picture == 'default.png')){
             File::delete('images/users/'.$user->profile_picture);
         }
         $user->delete();
         return redirect(route('users'))->withInput()->with('success', 'Utilizatorul' .' '.$user->name. ' '. 'a fost șters cu succes!');
     }
-
 }

@@ -10,6 +10,11 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
+                @if(session()->has('error'))
+                    <div class="alert alert-danger" id="alert">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <div class="card mb-4">
                     <div class="card-header">
                         Utilizatori înregistrați - {{$users->count() }}
@@ -50,9 +55,12 @@
                                         &nbsp;
                                         <form id="delete-form-{{$user->id}}" action="{{route('users.delete', $user->id)}}" method="post" style="display:inline-block;">
                                             @csrf
+                                            @method('DELETE')
                                         </form>
-
-                                        <a href="{{route('users.delete', $user->id)}}" class="butoane text-danger" title="Șterge utilizator" onClick="deleteItem({{$user->id}}, {{$user->name}})"><i class="fa-sharp fa-xl fa-solid fa-trash"></i></a>
+                                        <button class="butoane text-danger" title="Șterge utilizator" onclick="if(confirm('Confirmați ștergerea utilizatorului {{$user->name}}?')){
+                                            event.preventDefault();
+                                            document.getElementById('delete-form-'+{{$user->id}}).submit();}
+                                            "><i class="fa-sharp fa-xl fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -66,6 +74,8 @@
     <style>
         .butoane{
             text-decoration: none !important;
+            background:none !important;
+            border:none !important;
         }
         .user-avatar{
             max-height: 50px;
@@ -82,11 +92,4 @@
         setTimeout(()=>{
             document.getElementById('alert').style.display = 'none';
         }, 3000);
-    </script>
-    <script>
-        function deleteItem(id, name){
-            if(confirm(`Sunteți sigur că doriți să ștergeți utilizatorul ${name}?`)){
-                document.getElementById('delete-form-'+id).submit();
-            }
-        }
     </script>
