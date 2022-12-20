@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            <p>Ai uitat parola? Te rog să introduci adresa ta de email. Vei primi o legătură prin mail pentru a crea o parolă nouă. Aceasta este valabilă pentru 60 de minute.</p>
         </div>
 
         <!-- Session Status -->
@@ -25,7 +25,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
+                   Resetează parola
                 </x-primary-button>
             </div>
         </form>

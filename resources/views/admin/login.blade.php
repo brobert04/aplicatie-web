@@ -30,8 +30,13 @@
                       <input name="remember" class="form-check-input" type="checkbox" id="rememberMe" checked="">
                       <label class="form-check-label" for="rememberMe">Nu mă uita :)</label>
                     </div>
+                      <div class="mt-3">
+                          <p class="text-sm mx-auto">
+                              <a href="{{route('password.request')}}" class="text-info text-gradient font-weight-bold">Ai uitat parola?</a>
+                          </p>
+                      </div>
                     <div class="text-center">
-                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Conectează-te</button>
+                      <button type="submit" class="btn bg-gradient-info w-100 mt-3 mb-0">Conectează-te</button>
                     </div>
                   </form>
                 </div>
