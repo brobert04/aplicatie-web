@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\UsersController;
+use \App\Http\Controllers\Admin\UserProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +34,13 @@ Route::prefix('admin')->middleware(['admin'])->group(function(){
     Route::put('edit-user/{id}', [UsersController::class, 'editUser'])->name('users.edit');
     Route::delete('delete-user/{id}', [UsersController::class, 'deleteUser'])->name('users.delete');
 });
-//=================z
+//=================
 
 
 //======Rutele utilizatorului========
 Route::prefix('user')->middleware(['auth'])->group(function(){
-
+    Route::get('profile/', [UserProfile::class, 'showProfile'])->name('user.profile');
+    Route::put('edit-user-profile/{id}', [UserProfile::class, 'editUser'])->name('users.edit-profile');
 });
 //===================================================
 

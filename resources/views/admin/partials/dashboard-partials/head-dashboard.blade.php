@@ -11,4 +11,9 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     @yield('custom-css')
+    <style>
+        body{
+            background-color:#F4F6F9;
+        }
+    </style>
 </head>
