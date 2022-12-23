@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\ResetPasswordRequest;
 
 class UserProfile extends Controller
 {
@@ -44,5 +46,21 @@ class UserProfile extends Controller
 
         $user->save();
         return redirect()->route('user.profile')->with('success', 'Profilul a fost actualizat cu succes!');
+    }
+
+    public function resetPassword(ResetPasswordRequest $request)
+    {
+        if(Auth::attempt(['email'=>auth()->user()->email, 'password'=>$request->password]))
+        {
+            $newPassword = bcrypt($request->newpassword);
+            $user = User::find(auth()->user()->id);
+            $user->password = $newPassword;
+            $user->save();
+            return redirect()->back()->with('success', 'Parola a fost schimbată cu succes!');
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Parola actuală este greșită!');
+        }
     }
 }
