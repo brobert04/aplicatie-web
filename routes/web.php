@@ -38,7 +38,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function(){
 
 
 //======Rutele utilizatorului========
-Route::prefix('user')->middleware(['auth'])->group(function(){
+Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
     Route::get('profile/', [UserProfile::class, 'showProfile'])->name('user.profile');
     Route::put('edit-user-profile', [UserProfile::class, 'editUser'])->name('users.edit-profile');
 //  ====Ruta resetare parola=====

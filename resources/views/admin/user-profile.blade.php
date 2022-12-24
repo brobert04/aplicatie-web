@@ -80,7 +80,7 @@
                             <div class="alert alert-success mt-3" id="alert"> {{ session()->get('success') }} </div>
                         @endif
                         @if(session()->has('error'))
-                            <div class="alert alert-danger mt-3" id="alert"> {{ session()->get('error') }} </div>
+                            <div class="alert alert-warning mt-3" id="alert"> {{ session()->get('error') }} </div>
                         @endif
                 </div>
                 <div class="col-md-9">
