@@ -24,6 +24,7 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
+                                <th>Email Validat</th>
                                 <th>Nume</th>
                                 <th>Email</th>
                                 <th>Adresă și număr de telefon</th>
@@ -35,6 +36,13 @@
                             <tbody>
                             @foreach($users as $user)
                                 <tr>
+                                    <td class="text-center font-weight-bold">
+                                        @if($user->hasVerifiedEmail())
+                                            <span style="color:green;"><i class="fa-solid fa-check"></i></span>
+                                        @else
+                                            <span style="color:red;"><i class="fa-solid fa-minus-circle"></i></span>
+                                        @endif
+                                    </td>
                                     <td>
                                         {{$user->name}}
                                         <br>

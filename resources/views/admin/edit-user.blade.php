@@ -2,7 +2,7 @@
 @section('content')
     <div class="card card-dark">
         <div class="card-header">
-            <h3 class="card-title">Editează utilizatorul <span class="text-warning fst-italic">{{$user->name}}</span></h3>
+            <h3 class="card-title">Editează utilizatorul <span class="text-warning fst-italic" data-toggle="tooltip" data-placement="top" title="Acest utilizator {!! $user->hasVerifiedEmail() ? 'are' : 'nu are' !!} email-ul verificat!">{{$user->name}}</span></h3>
         </div>
         <form method="POST" action="{{route('users.edit', $user->id)}}" enctype="multipart/form-data">
             @csrf
@@ -50,6 +50,16 @@
                     </select>
                     @error('role') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
+                <div class="form-group">
+                    <label for="role">Verificare email</label>
+                    <select class="form-control" name="role">
+                        <option value="false" selected>Nicio acțiune</option>
+                        <option class="text-info" value="send">Trimite notificare pentru validarea mail-ului</option>
+                        <option class="text-success" value="mark">Marchează email-ul drept verificat</option>
+                        <option class="text-danger" value="invalid">Invalidează email-ul utilizatorului</option>
+                    </select>
+                    @error('role') <span class="text-danger small">{{$message}}</span>@enderror
+                </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-dark">Editează</button>
@@ -80,5 +90,11 @@
             }
         };
     </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+@endsection
 
 
