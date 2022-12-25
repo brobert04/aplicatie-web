@@ -76,6 +76,18 @@ class UsersController extends Controller
         $user->address  = $request->address;
         $user->role  = $request->role;
 
+        //verificare email
+        if($request->emailvalidation =='mark'){
+            $user->email_verified_at = now();
+        }
+        elseif($request->emailvalidation =='invalid'){
+            $user->email_verified_at = null;
+        }
+        elseif($request->emailvalidation=='send'){
+            $user->email_verified_at = null;
+            $user->sendEmailVerificationNotification();
+        }
+
         $user->save();
         return redirect(route('users'))->withInput()->with('success', 'Utilizatorul' .' '.$user->name. ' '. 'a fost actualizat cu succes!');
     }

@@ -1,4 +1,5 @@
 @extends('admin.layouts.layout-dashboard')
+@section('title', 'Adăugare Utilizator Nou')
 @section('content')
     <div class="card card-dark">
         <div class="card-header">

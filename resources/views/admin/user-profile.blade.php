@@ -1,4 +1,5 @@
 @extends('admin.layouts.layout-dashboard')
+@section('title', 'Profil - '.$user->name)
 @section('custom-css')
     <style>
         #delete-profile:hover {

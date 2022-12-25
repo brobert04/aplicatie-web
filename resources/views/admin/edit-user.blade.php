@@ -1,4 +1,5 @@
 @extends('admin.layouts.layout-dashboard')
+@section('title', 'Editare Utilizator - '. $user->name)
 @section('content')
     <div class="card card-dark">
         <div class="card-header">
@@ -51,14 +52,13 @@
                     @error('role') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
-                    <label for="role">Verificare email</label>
-                    <select class="form-control" name="role">
+                    <label for="emailvalidation">Verificare email</label>
+                    <select class="form-control" name="emailvalidation">
                         <option value="false" selected>Nicio acțiune</option>
                         <option class="text-info" value="send">Trimite notificare pentru validarea mail-ului</option>
                         <option class="text-success" value="mark">Marchează email-ul drept verificat</option>
                         <option class="text-danger" value="invalid">Invalidează email-ul utilizatorului</option>
                     </select>
-                    @error('role') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
             </div>
             <div class="card-footer">
