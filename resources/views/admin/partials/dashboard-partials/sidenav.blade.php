@@ -9,7 +9,11 @@
                     Utilizatori
                 </a>
                 @endif
-                <div class="sb-sidenav-menu-heading">Interface</div>
+                <div class="sb-sidenav-menu-heading">Content</div>
+                    <a class="nav-link" href="{{route('categories')}}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                        Categorii
+                    </a>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
                    aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

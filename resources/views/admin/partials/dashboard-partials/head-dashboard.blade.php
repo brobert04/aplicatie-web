@@ -9,6 +9,7 @@
     <link href="{{asset('../admin/css/styles.css')}}" rel="stylesheet" />
     <link href="{{asset('../admin/css/adminlte.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <link href="summernote-bs5.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     @yield('custom-css')

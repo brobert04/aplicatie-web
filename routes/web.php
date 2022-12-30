@@ -37,6 +37,12 @@ Route::prefix('admin')->middleware(['admin'])->group(function(){
 //=================
 
 
+//=========Rutele pentru categorii ale adminului===========
+Route::prefix('admin')->middleware(['auth'])->group(function(){
+   Route::get('categories', [\App\Http\Controllers\Admin\CategoryController::class, 'showCategories'])->name('categories');
+   Route::get('categories/new', [\App\Http\Controllers\Admin\CategoryController::class,'newCategoryForm'])->name('categories.new');
+});
+
 //======Rutele utilizatorului========
 Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
     Route::get('profile/', [UserProfile::class, 'showProfile'])->name('user.profile');
@@ -45,7 +51,6 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
 
     Route::put('reset-password', [UserProfile::class, 'resetPassword'])->name('users.reset-password');
 });
-//===================================================
 
 
 Route::view('/forgot-password', 'auth.forgot-password')->middleware('guest')->name('password.request');
