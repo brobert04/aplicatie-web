@@ -36,11 +36,12 @@ Route::prefix('admin')->middleware(['admin'])->group(function(){
 });
 //=================
 
-
 //=========Rutele pentru categorii ale adminului===========
 Route::prefix('admin')->middleware(['auth'])->group(function(){
    Route::get('categories', [\App\Http\Controllers\Admin\CategoryController::class, 'showCategories'])->name('categories');
    Route::get('categories/new', [\App\Http\Controllers\Admin\CategoryController::class,'newCategoryForm'])->name('categories.new');
+   Route::post('categories/new', [\App\Http\Controllers\Admin\CategoryController::class,'createCategory'])->name('categories.create');
+   Route::get('categories/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class,'editCategoryForm'])->name('categories.edit-form');
 });
 
 //======Rutele utilizatorului========
@@ -48,7 +49,6 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
     Route::get('profile/', [UserProfile::class, 'showProfile'])->name('user.profile');
     Route::put('edit-user-profile', [UserProfile::class, 'editUser'])->name('users.edit-profile');
 //  ====Ruta resetare parola=====
-
     Route::put('reset-password', [UserProfile::class, 'resetPassword'])->name('users.reset-password');
 });
 

@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">Adaugă categorie nouă</h3>
         </div>
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="{{route('categories.create')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="excerpt">Descriere</label>
-                    <textarea class="form-control @error('excerpt') is-invalid @enderror" id="excerpt" name="summary-ckeditor"></textarea>
+                    <textarea class="form-control @error('excerpt') is-invalid @enderror" id="excerpt" name="excerpt"></textarea>
                     @error('excerpt') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
@@ -44,7 +44,7 @@
                             <label class="custom-file-label" for="photo">Choose file</label>
                         </div>
                     </div>
-                    @error('profile_photo') <span class="text-danger small">{{$message}}</span>@enderror
+                    @error('photo') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <button type="button" class="butoane text-primary dropdown-toggle mt-3" id="more_btn">
                     Mai mult
@@ -130,6 +130,6 @@
     </script>
     <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'summary-ckeditor' );
+        CKEDITOR.replace( 'excerpt' );
     </script>
 @endsection
