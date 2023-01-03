@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\CreateCategoryRequest;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -46,5 +47,29 @@ class CategoryController extends Controller
     public function editCategoryForm($id){
         $category = Category::find($id);
         return view('admin.category.edit-category')->with('category', $category);
+    }
+
+    public function editCategory(Request $request, $id){
+        $category = Category::find($id);
+
+        if($request->hasFile('photo')){
+            if(!($category->photo == 'category.jpg')){
+                File::delete('images/categories/'.$category->photo);
+            }
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $photo_name = str_replace(' ', '',$request->title) .'_' . time().'.'.$extension;
+            $request->file('photo')->move('images/categories', $photo_name);
+            $category->photo = $photo_name;
+        }
+
+        $category->title = $request->title;
+        $category->subtitle = $request->subtitle;
+        $request->slug = Str::slug($request->slug);
+        $category->excerpt = $request->excerpt;
+        $category->meta_title = $request->meta_title;
+        $category->meta_description = $request->meta_description;
+        $category->meta_keywords = $request->meta_keywords;
+        $category->save();
+        return redirect(route('categories'))->withInput()->with('success', 'Categoria' .' '.$category->title. ' '. 'a fost editată cu succes!');
     }
 }

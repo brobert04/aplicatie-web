@@ -1,5 +1,5 @@
 @extends('admin.layouts.layout-dashboard')
-@section('title', 'Gestionare Utilizatori')
+@section('title', 'Gestionare Categorii')
 @section('content')
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Panou Control</a></li>
@@ -24,7 +24,7 @@
             <table id="datatablesSimple">
                 <thead>
                 <tr>
-                    <th class="text-center">Titlu - Slug</th>
+                    <th class="text-center">Titlu</th>
                     <th class="text-center">Subtitlu</th>
                     <th class="text-center">Vizualizări</th>
                     <th class="text-center">Fotografie</th>
