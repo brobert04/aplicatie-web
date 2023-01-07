@@ -15,10 +15,10 @@ use \App\Http\Controllers\Admin\UserProfile;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//======RUTELE PUBLICE=====
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('frontend_views.home');
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('admin.control-panel');
@@ -37,7 +37,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function(){
 //=================
 
 //=========Rutele pentru categorii ale adminului===========
-Route::prefix('admin')->middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'verified'])->group(function(){
    Route::get('categories', [\App\Http\Controllers\Admin\CategoryController::class, 'showCategories'])->name('categories');
    Route::get('categories/new', [\App\Http\Controllers\Admin\CategoryController::class,'newCategoryForm'])->name('categories.new');
    Route::post('categories/new', [\App\Http\Controllers\Admin\CategoryController::class,'createCategory'])->name('categories.create');

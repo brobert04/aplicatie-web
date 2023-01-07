@@ -18,7 +18,7 @@
     <div class="card mb-4">
         <div class="card-header">
             Categorii - {{$categories->count() }}
-            <a href="{{route('categories.new')}}" class=" float-end ">Adaugă Categorii</a>
+            @can('author-rights')<a href="{{route('categories.new')}}" class=" float-end ">Adaugă Categorii</a>@endcan
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
@@ -53,6 +53,7 @@
                             <a href="{{route('categories.edit-form',
                             $c->id)}}" class="butoane text-success" title="Editează categorie"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
                             &nbsp;
+                            @can('author-rights')
                             <form id="delete-form-{{$c->id}}" action="{{route('categories.delete', $c->id)}}" method="post" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
@@ -61,6 +62,7 @@
                                             event.preventDefault();
                                             document.getElementById('delete-form-'+{{$c->id}}).submit();}
                                             "><i class="fa-sharp fa-xl fa-solid fa-trash"></i></button>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

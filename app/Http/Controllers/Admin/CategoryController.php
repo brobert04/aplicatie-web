@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use App\Http\Requests\UpdateCategoryRequest;
 
@@ -18,10 +19,16 @@ class CategoryController extends Controller
     }
 
     public function newCategoryForm(){
+        if (! Gate::allows('author-rights')) {
+            return redirect(route('categories'))->with('error', 'Nu aveți permisiunea de a crea o categorie!');
+        }
         return view('admin.category.new-category');
     }
 
     public function createCategory(CreateCategoryRequest $request){
+        if (! Gate::allows('author-rights')) {
+            return redirect(route('categories'))->with('error', 'Nu aveți permisiunea de a crea o categorie!');
+        }
         $this->validate($request,
             [
                 'slug'=>'unique:categories,slug'
@@ -54,6 +61,7 @@ class CategoryController extends Controller
         return redirect(route('categories'))->withInput()->with('success', 'Categoria' .' '.$category->title. ' '. 'a fost creată cu succes!');
     }
     public function editCategoryForm($id){
+
         $category = Category::find($id);
         return view('admin.category.edit-category')->with('category', $category);
     }
@@ -93,6 +101,9 @@ class CategoryController extends Controller
     }
 
     public function deleteCategory($id){
+        if (! Gate::allows('author-rights')) {
+            return redirect(route('categories'))->with('error', 'Nu aveți permisiunea de a șterge o categorie!');
+        }
         $category = Category::find($id);
         if(!($category->photo == 'category.jpg')){
             File::delete('images/categories/'.$category->photo);
