@@ -43,6 +43,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
    Route::post('categories/new', [\App\Http\Controllers\Admin\CategoryController::class,'createCategory'])->name('categories.create');
    Route::get('categories/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class,'editCategoryForm'])->name('categories.edit-form');
    Route::put('categories/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class,'editCategory'])->name('categories.edit');
+   Route::delete('categories/delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class,'deleteCategory'])->name('categories.delete');
 });
 
 //======Rutele utilizatorului========

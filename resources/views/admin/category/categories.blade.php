@@ -25,7 +25,6 @@
                 <thead>
                 <tr>
                     <th class="text-center">Titlu</th>
-                    <th class="text-center">Subtitlu</th>
                     <th class="text-center">Vizualizări</th>
                     <th class="text-center">Fotografie</th>
                     <th class="text-center">Meta Description & Meta Keywords</th>
@@ -35,11 +34,9 @@
                 <tbody>
                 @foreach($categories as $c)
                     <tr>
-                        <td>
+                        <td style="font-weight:bold;">
                             {{$c->title}}
-                        </td>
-                        <td>
-                            {{$c->subtitle}}
+                            <p class="text-warning" style="font-size: 12px;">{{$c->subtitle}}</p>
                         </td>
                         <td>
                             {{$c->views}}
@@ -51,16 +48,16 @@
                         <td>
                             {{$c->meta_description}}
                             <br>
-                            <span class="badge bg-primary">{{$c->meta_keywords}}</span>
+                            <span id="keywords" class="badge bg-primary">{{$c->meta_keywords}}</span>
                         <td class="text-center">
                             <a href="{{route('categories.edit-form',
                             $c->id)}}" class="butoane text-success" title="Editează categorie"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
                             &nbsp;
-                            <form id="delete-form-{{$c->id}}" action="" method="post" style="display:inline-block;">
+                            <form id="delete-form-{{$c->id}}" action="{{route('categories.delete', $c->id)}}" method="post" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
                             </form>
-                            <button class="butoane text-danger" title="Șterge categorie" onclick="if(confirm('Confirmați ștergerea utilizatorului {{$c->name}}?')){
+                            <button class="butoane text-danger" title="Șterge categorie" onclick="if(confirm('Confirmați ștergerea categoriei {{$c->title}}?')){
                                             event.preventDefault();
                                             document.getElementById('delete-form-'+{{$c->id}}).submit();}
                                             "><i class="fa-sharp fa-xl fa-solid fa-trash"></i></button>

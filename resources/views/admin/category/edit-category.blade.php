@@ -12,8 +12,8 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="title">Nume categorie</label>
-                    <input name="title" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nume categorie" value="{{old('title') ? old('title') : $category->title}}">
-                    @error('name') <span class="text-danger small">{{$message}}</span>@enderror
+                    <input name="title" type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Nume categorie" value="{{old('title') ? old('title') : $category->title}}">
+                    @error('title') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="text">Subtitlu</label>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="slug">Slug</label>
-                    <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" id="slug" placeholder="Slug" value="{{old('slug') ? old('slug') : $category->slug}}">
+                    <input type="text" name="slug" class="form-control @error('phone_number') is-invalid @enderror" id="slug" placeholder="Slug" value="{{old('slug') ? old('slug') : $category->slug}}">
                     @error('slug') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
@@ -121,6 +121,18 @@
         let more = document.getElementById('more');
         button.addEventListener('click', function () {
             more.hidden = !more.hidden;
+        });
+    </script>
+    <script>
+        $('#title').on('blur',function(){
+            var theTitle=this.value.toLowerCase().trim(),
+                slugInput=$('#slug'),
+                theSlug=theTitle.replace(/&/g,'-and-')
+                    .replace(/[^a-z0-9-]+/g,'-')
+                    .replace(/\-\-+/g,'-')
+                    .replace(/^-+|-+$/g,'');
+
+            slugInput.val(theSlug);
         });
     </script>
 @endsection

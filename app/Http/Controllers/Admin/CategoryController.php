@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -21,6 +22,14 @@ class CategoryController extends Controller
     }
 
     public function createCategory(CreateCategoryRequest $request){
+        $this->validate($request,
+            [
+                'slug'=>'unique:categories,slug'
+            ],
+            [
+                'slug.unique'=>'Slug-ul este deja folosit de o altă categorie!'
+            ]
+        );
         $category = new Category();
         $category->title = $request->title;
         $category->subtitle = $request->subtitle;
@@ -49,7 +58,17 @@ class CategoryController extends Controller
         return view('admin.category.edit-category')->with('category', $category);
     }
 
-    public function editCategory(Request $request, $id){
+    public function editCategory(CreateCategoryRequest $request, $id){
+
+        $this->validate($request,
+            [
+                'slug'=>'unique:categories,slug,'.$id,
+            ],
+            [
+                'slug.unique'=>'Slug-ul este deja folosit de o altă categorie!'
+            ]
+        );
+
         $category = Category::find($id);
 
         if($request->hasFile('photo')){
@@ -71,5 +90,14 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->meta_keywords;
         $category->save();
         return redirect(route('categories'))->withInput()->with('success', 'Categoria' .' '.$category->title. ' '. 'a fost editată cu succes!');
+    }
+
+    public function deleteCategory($id){
+        $category = Category::find($id);
+        if(!($category->photo == 'category.jpg')){
+            File::delete('images/categories/'.$category->photo);
+        }
+        $category->delete();
+        return redirect(route('categories'))->withInput()->with('success', 'Categoria' .' '.$category->title. ' '. 'a fost ștearsă cu succes!');
     }
 }
