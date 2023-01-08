@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\View\Composers\NavbarComposer;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -34,5 +37,7 @@ class AppServiceProvider extends ServiceProvider
 //                ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.users.expire')]))
 //                ->line(Lang::get('If you did not request a password reset, no further action is required.'));
         });
+
+        View::composer('frontend_views.*', NavbarComposer::class);
     }
 }

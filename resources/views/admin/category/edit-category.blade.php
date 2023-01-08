@@ -33,11 +33,6 @@
                     @error('excerpt') <span class="text-danger small">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
-                    <label for="order">Ordine</label>
-                    <input name="order" type="number" class="form-control @error('order') is-invalid @enderror" id="order" placeholder="Ordine de afișare" value="{{old('order')}}">
-                    @error('order') <span class="text-danger small">{{$message}}</span>@enderror
-                </div>
-                <div class="form-group">
                     <label for="exampleInputFile">Poză</label>
                     <div class="preview-image">
                         <img id="photo_preview" src="{{'/images/categories/' . $category->photo}}" class="img-thumbnail" style="max-width: 200px; max-height: 200px;">
@@ -49,6 +44,12 @@
                         </div>
                     </div>
                     @error('photo') <span class="text-danger small">{{$message}}</span>@enderror
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" name="publish" type="checkbox" value="1" id="publish" {{$category->publish == 1 ? 'checked' : ''}}>
+                        <label for="publish" class="custom-control-label">Public</label>
+                    </div>
                 </div>
                 <button type="button" class="butoane text-primary dropdown-toggle mt-3" id="more_btn">
                     Mai mult

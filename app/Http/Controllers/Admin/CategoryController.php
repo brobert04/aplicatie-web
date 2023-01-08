@@ -45,7 +45,7 @@ class CategoryController extends Controller
 
 
 //        $category->order = $request->order;
-//        $category->public = $request->public;
+        $category->publish = $request->publish;
 
         if($request->hasFile('photo')){
             $extension = $request->file('photo')->getClientOriginalExtension();
@@ -91,8 +91,9 @@ class CategoryController extends Controller
 
         $category->title = $request->title;
         $category->subtitle = $request->subtitle;
-        $request->slug = Str::slug($request->slug);
+        $category->slug = Str::slug($request->slug);
         $category->excerpt = $request->excerpt;
+        $category->publish = $request->publish;
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
         $category->meta_keywords = $request->meta_keywords;

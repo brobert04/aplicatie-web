@@ -13,11 +13,9 @@
         </header>
         <div class="container">
             @yield('content')
-
         </div>
         <!-- main-panel ends -->
         <!-- container-scroller ends -->
-
         <!-- partial:partials/_footer.html -->
         @include('frontend_views.partials.footer')
 

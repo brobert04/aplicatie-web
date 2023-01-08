@@ -24,6 +24,7 @@
             <table id="datatablesSimple">
                 <thead>
                 <tr>
+                    <th class="text-center">Public</th>
                     <th class="text-center">Titlu</th>
                     <th class="text-center">Vizualizări</th>
                     <th class="text-center">Fotografie</th>
@@ -34,6 +35,13 @@
                 <tbody>
                 @foreach($categories as $c)
                     <tr>
+                        <td class="text-center font-weight-bold">
+                            @if($c->publish == 1)
+                                <span style="color:green;"><i class="fa-solid fa-check"></i></span>
+                            @else
+                                <span style="color:red;"><i class="fa-solid fa-minus-circle"></i></span>
+                            @endif
+                        </td>
                         <td style="font-weight:bold;">
                             {{$c->title}}
                             <p class="text-warning" style="font-size: 12px;">{{$c->subtitle}}</p>

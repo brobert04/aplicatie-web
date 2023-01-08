@@ -14,7 +14,7 @@
                 @if(Route::has('login'))
                     @auth
                         <li>
-                            <a href="{{route('dashboard')}}">Panou Control</a>
+                            <a href="{{route('dashboard')}}">{{auth()->user()->name}}</a>
                         </li>
                     @else
                         <li>
@@ -82,37 +82,21 @@
                     </button>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link active" href="{{route('home')}}" style="text-transform: capitalize">Acasă</a>
                 </li>
+                @foreach($sections as $sec)
+                    @if($loop->index <= 8)
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="{{route('categories.posts', $sec->slug)}}" style="text-transform: capitalize">{{$sec->title}}</a>
+                        </li>
+                    @else
+                        @break
+                    @endif
+                @endforeach
+
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/world.html">World</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/author.html">Magazine</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/news-post.html">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/business.html">Business</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/sports.html">Sports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/art.html">Art</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/politics.html">Politics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/real-estate.html">Real estate</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/travel.html">Travel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="mdi mdi-magnify"></i></a>
+{{--                    <a class="nav-link" href="#"><i class="mdi mdi-magnify"></i></a>--}}
+
                 </li>
             </ul>
         </div>

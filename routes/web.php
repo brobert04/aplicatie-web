@@ -16,9 +16,8 @@ use \App\Http\Controllers\Admin\UserProfile;
 |
 */
 //======RUTELE PUBLICE=====
-Route::get('/', function () {
-    return view('frontend_views.home');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\front\FrontendController::class, 'index'])->name('home');
+Route::get('/category/{category:slug}', [\App\Http\Controllers\front\FrontendController::class, 'categoryPage'])->name('categories.posts');
 
 Route::get('/dashboard', function () {
     return view('admin.control-panel');
