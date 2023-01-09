@@ -24,7 +24,7 @@
     <link rel="shortcut icon" href="{{asset('../frontend/assets/images/favicon.png')}}" />
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('../frontend/assets/css/style.css')}}">
-    <!-- endinject -->
 
+    <!-- endinject -->
     @yield('custom-css')
 </head>

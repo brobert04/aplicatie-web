@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('editor')->nullable();
+            $table->string('role')->default('user')->nullable();
             $table->string('profile_picture')->default('default.png')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();

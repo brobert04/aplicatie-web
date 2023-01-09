@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'phone' => fake()->e164PhoneNumber(),
             'address' => fake()->city().', '.fake()->streetAddress().', '.fake()->country(),
             'created_at' => fake()->dateTimeBetween('-2 year', 'now'),
-            'role' => fake()->randomElement(['editor', 'autor ']),
+            'role' => fake()->randomElement(['user', 'autor']),
         ];
     }
 

@@ -93,12 +93,12 @@
                         @break
                     @endif
                 @endforeach
-
                 <li class="nav-item">
-{{--                    <a class="nav-link" href="#"><i class="mdi mdi-magnify"></i></a>--}}
-
+                    <button id="search" class="nav-link" href="#" style="background-color:transparent; border: none;"><i class="mdi mdi-magnify"></i></button>
                 </li>
+                <li><input id="searchBar" type="text" class="form-control form-control-border" id="exampleInputBorder" placeholder="Caută..." hidden="true"></li>
             </ul>
         </div>
     </div>
 </nav>
+

@@ -29,7 +29,9 @@
                     <th class="text-center">Vizualizări</th>
                     <th class="text-center">Fotografie</th>
                     <th class="text-center">Meta Description & Meta Keywords</th>
+                    @can('author-rights')
                     <th class="text-center">Acțiuni</th>
+                        @endcan
                 </tr>
                 </thead>
                 <tbody>
@@ -57,10 +59,11 @@
                             {{$c->meta_description}}
                             <br>
                             <span id="keywords" class="badge bg-primary">{{$c->meta_keywords}}</span>
+                        @can('author-rights')
                         <td class="text-center">
                             <a href="{{route('categories.edit-form',
                             $c->id)}}" class="butoane text-success" title="Editează categorie"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
-                            &nbsp;
+                            @endcan
                             @can('author-rights')
                             <form id="delete-form-{{$c->id}}" action="{{route('categories.delete', $c->id)}}" method="post" style="display:inline-block;">
                                 @csrf

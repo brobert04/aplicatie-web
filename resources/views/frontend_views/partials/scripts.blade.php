@@ -7,4 +7,11 @@
 <!-- Custom js for this page-->
 <script src="{{asset('../frontend/assets/js/demo.js')}}"></script>
 <!-- End custom js for this page-->
+<script>
+    let search = document.querySelector('#search')
+    let searchBar = document.querySelector('#searchBar')
+    search.addEventListener('click', function(){
+        searchBar.hidden = !searchBar.hidden
+    })
+</script>
 @yield('custom-js')
