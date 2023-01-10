@@ -20,13 +20,16 @@ class PostsFactory extends Factory
     {
         $title = $this->faker->sentence(3, $asText=true);
         $slug = Str::slug($title, '-');
+        $created_at = $this->faker->dateTimeBetween('-2 year', 'now');
         return [
             'title'=>$title,
             'slug'=>$slug,
             'subtitle'=>$this->faker->sentence(3, true),
             'content' => $this->faker->paragraph(rand(6,15), true),
             'views' => rand(0, 10000),
-            'published_at' => $this->faker->randomElement(array(null, $this->faker->dateTimeBetween('-2 year', 'now'))),
+            'published_at' => $this->faker->randomElement(array(null, $created_at)),
+            'created_at' => $created_at,
+            'photo' => 'post.jpg',
             'user_id' => User::all()->where('role','autor')->random(),
             'meta_title' => $this->faker->words(rand(1,5), true),
             'meta_description' => $this->faker->sentence(3, true),

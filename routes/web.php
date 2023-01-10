@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\UsersController;
 use \App\Http\Controllers\Admin\UserProfile;
+use App\Http\Controllers\Admin\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
    Route::get('categories/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class,'editCategoryForm'])->name('categories.edit-form');
    Route::put('categories/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class,'editCategory'])->name('categories.edit');
    Route::delete('categories/delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class,'deleteCategory'])->name('categories.delete');
+
+
+   // RUTELE PENTRU POSTARI
+    Route::get('posts', [PostsController::class, 'index'])->name('admin.posts');
 });
 
 //======Rutele utilizatorului========
@@ -52,6 +57,9 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
 //  ====Ruta resetare parola=====
     Route::put('reset-password', [UserProfile::class, 'resetPassword'])->name('users.reset-password');
 });
+
+
+
 
 
 Route::view('/forgot-password', 'auth.forgot-password')->middleware('guest')->name('password.request');

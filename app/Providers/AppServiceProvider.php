@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Lang;
 
 class AppServiceProvider extends ServiceProvider
@@ -39,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('frontend_views.*', NavbarComposer::class);
+        Paginator::useBootstrap();
     }
 }

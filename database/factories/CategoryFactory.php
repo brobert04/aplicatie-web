@@ -17,14 +17,16 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->sentence(3, $asText=true);
+        $title = $this->faker->sentence(1, $asText=true);
         $slug = Str::slug($title, '-');
+
         return [
             'title'=>$title,
             'slug'=>$slug,
             'subtitle'=>$this->faker->sentence(3, true),
             'excerpt' => $this->faker->paragraph(rand(1,3), true),
             'views' => rand(0, 2000),
+            'photo'=> 'category.jpg',
             'meta_title' => $this->faker->words(rand(1,5), true),
             'meta_description' => $this->faker->sentence(3, true),
             'meta_keywords' => $this->faker->words(rand(1,8), true),
