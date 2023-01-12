@@ -24,6 +24,7 @@
     <link rel="shortcut icon" href="{{asset('../frontend/assets/images/favicon.png')}}" />
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('../frontend/assets/css/style.css')}}">
+    <script  src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- endinject -->
     @yield('custom-css')
 </head>

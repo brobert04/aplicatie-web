@@ -57,7 +57,13 @@
                                     <td class="text-center">
                                         <img class="user-avatar" src="../images/users/{{$user->profile_picture}}">
                                     </td>
-                                    <td style="text-transform: capitalize">{{$user->role}}</td>
+                                    <td style="text-transform: capitalize">
+                                        @if($user->role == 'autor')
+                                        <a href="{{ route('admin.posts', ['autor'=> $user->id]) }}">{{$user->role}}</a>
+                                        @else
+                                        {{ $user->role }}
+                                        @endif
+                                    </td>
                                     <td class="text-center">
                                         <a href="{{route('users.edit-form', $user->id)}}" class="butoane text-success" title="Editează utilizator"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
                                         &nbsp;

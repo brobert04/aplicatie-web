@@ -15,6 +15,9 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{route('home')}}">Acasă</a></li>
                 <li><a class="dropdown-item" href="{{route('user.profile')}}">Profil</a></li>
+                @if(auth()->user()->role == 'autor')
+                    <li><a class="dropdown-item" href="{{ route('admin.posts', ['autor'=> auth()->id]) }}">Postări</a></li>
+                @endif
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>

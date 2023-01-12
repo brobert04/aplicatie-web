@@ -36,7 +36,10 @@
                             @foreach ($posts as $post )
                         <tr>
                             <td>{{ $post->title }} <br> <span class="under-info">{{ $post->created_at->format('F j, Y') }}</span></td>
-                            <td>{{ $post->user_id }}</td>
+                            <td><a href="{{ route('admin.posts', ['autor'=> $post->user->id]) }}">{{ $post->user->name }}</a>
+                                <br>
+                                <span class="under-info">{{ $post->user->posts->count() }} postări</span>
+                            </td>
                             <td><img style="max-width: 100px; max-height: 100px"class="img-thumbnail" src="{{ asset('../images/posts/' .$post->photo) }}"></td>
                             <td>{{ $post->views }}</td>
                             <td>
